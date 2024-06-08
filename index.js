@@ -3,7 +3,7 @@ import puppeteer from "puppeteer";
 async function accessLink(){
 
     const browser = await puppeteer.launch({
-        headless: false
+        headless: true
     })
     const page = await browser.newPage()
 
@@ -20,11 +20,11 @@ async function accessLink(){
     // Acceder a oportunidades laborales
     await page.goto(hrefElement)
     
-    //
     const result = await page.evaluate(()=>{
+        // Busco todos los table rows
         return Array.from (
             document.querySelectorAll('tr')
-        ).map(fila => {
+        ).map(fila => { // A partir de cada fila obtengo los campos que deseo mostrar
             const campos = Array.from(fila.querySelectorAll('td'))
             const primerCampo = campos[1]?.querySelector('a')
             const segundoCampo = campos[2]
@@ -38,7 +38,7 @@ async function accessLink(){
                 second: '2-digit',
                 hour12: false
             })
-
+            // Retorno el objeto
             return {
                 id: fila.rowIndex,
                 link: primerCampo?.href || '',
