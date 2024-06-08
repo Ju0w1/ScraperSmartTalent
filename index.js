@@ -55,23 +55,3 @@ async function accessLink(){
 }
 
 accessLink()
-
-////
-
-// campos.map(campo => {
-//     const link = campo.querySelector('a');
-//     if (link) {
-//         // Si hay un enlace, devuelve el href y el texto del enlace
-//         return {
-//             type: 'link',
-//             href: link.href,
-//             text: link.textContent.trim()
-//         };
-//     } else {
-//         // Si no hay un enlace, devuelve el texto de la celda
-//         return {
-//             type: 'text',
-//             text: td.textContent.trim()
-//         };
-//     }
-// })
